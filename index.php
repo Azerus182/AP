@@ -1,5 +1,13 @@
 <?php
+require_once($_SERVER["DOCUMENT_ROOT"]."/Model/User.php");
 require_once($_SERVER["DOCUMENT_ROOT"]."/View/Navbar.php");
+
+$database = new SQL();
+$error = $database->error() ? $database->error() : null;
+$success = null;
+$users = new User($database);
+$user = $users->getUser(Navigator::get("token"));
+$role = $user ? $users->getRole($user["role"]) : null;
 ?>
 <!DOCTYPE html>
 <html lang="fr">
