@@ -1,0 +1,30 @@
+@use "color" as color;
+
+$height: 3rem;
+
+.navbar {
+    width: 100%;
+    height: $height;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+
+    * {
+        width: 100%;
+        height: $height;
+        line-height: $height;
+
+        text-align: center;
+        text-decoration: none;
+
+        background-color: color.$color1;
+        color: color.$color2;
+        transition-delay: 3;
+    }
+
+    a:hover {
+        background-color: color.$color2;
+        color: color.$color1;
+    }
+}
