@@ -18,13 +18,13 @@ $height: 3rem;
         text-align: center;
         text-decoration: none;
 
-        background-color: color.$color1;
-        color: color.$color2;
+        background-color: color.$one;
+        color: color.$two;
         transition-delay: 3;
     }
 
     a:hover {
-        background-color: color.$color2;
-        color: color.$color1;
+        background-color: color.$two;
+        color: color.$one;
     }
 }
