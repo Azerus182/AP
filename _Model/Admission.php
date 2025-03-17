@@ -1,5 +1,5 @@
 <?php
-require_once($_SERVER["DOCUMENT_ROOT"]."/Model/SQL.php");
+require_once($_SERVER["DOCUMENT_ROOT"]."/_Model/SQL.php");
 
 class Admission {
     private $database;
