@@ -1,0 +1,47 @@
+@use "color" as color;
+@use "navbar" as navbar;
+
+.login {
+    width: 100%;
+    height: calc(100vh - navbar.$height);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    form {
+        display: flex;
+        padding: 2em;
+
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        background-color: color.$one;
+        border-radius: 1em;
+
+        p, label {
+            color: color.$two;
+        }
+        p {
+            font-size: 1.5em;
+        }
+
+        .field {
+            width: 100%;
+            padding-top: 2em;
+
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+
+            > * {
+                width: 100%;
+
+                padding-left: 1em;
+                padding-right: 1em;
+            }
+        }
+    }
+}
