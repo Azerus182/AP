@@ -1,9 +1,15 @@
 <?php
-require_once($_SERVER["DOCUMENT_ROOT"]."/Model/User.php");
-require_once($_SERVER["DOCUMENT_ROOT"]."/View/Navbar.php");
+require_once($_SERVER["DOCUMENT_ROOT"]."/_Model/User.php");
+require_once($_SERVER["DOCUMENT_ROOT"]."/_Model/Navigator.php");
+require_once($_SERVER["DOCUMENT_ROOT"]."/_View/Navbar.php");
 
 $database = new SQL();
-$error = $database->error() ? $database->error() : null;
+if ($database->error()) {
+    // header('Location: /error/500/');
+    print($database->error());
+    die();
+}
+
 $success = null;
 $users = new User($database);
 $user = $users->getUser(Navigator::get("token"));
@@ -15,7 +21,7 @@ $role = $user ? $users->getRole($user["role"]) : null;
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LPFS-Intranet</title>
-    <link rel="stylesheet" href="/asset/css/style.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
 </head>
 <body>
 <?php
