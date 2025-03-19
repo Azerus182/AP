@@ -61,4 +61,41 @@
   padding-right: 1em;
 }
 
+.statusbar {
+  width: 100%;
+}
+.statusbar .error {
+  background-color: rgb(255, 0, 0);
+}
+.statusbar .success {
+  background-color: rgb(61, 202, 0);
+}
+.statusbar .error, .statusbar .success {
+  height: 3rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+.statusbar .text {
+  color: white;
+}
+.statusbar button {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 3px;
+  background-color: transparent;
+  border: solid white 3px;
+}
+.statusbar button:hover {
+  background-color: rgba(63, 63, 63, 0.365);
+}
+.statusbar .none {
+  display: none;
+}
+
 /*# sourceMappingURL=style.css.map */
