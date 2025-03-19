@@ -1,0 +1,49 @@
+@use "color";
+
+.statusbar {
+    width: 100%;
+
+    .error {
+        background-color: color.$error;
+    }
+
+    .success {
+        background-color: color.$success;
+    }
+
+    .error, .success {
+        height: 3rem;
+
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    .text {
+        color: white;
+    }
+
+    button {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        border-radius: 3px;
+
+        background-color: transparent;
+
+        border: solid white 3px;
+
+        &:hover {
+            background-color: rgba(63, 63, 63, 0.365);
+        }
+    }
+
+    .none {
+        display: none;
+    }
+}
