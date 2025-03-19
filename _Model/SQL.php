@@ -14,7 +14,9 @@ class SQL {
     }
 
     public function __destruct() {
-        $this->handler->close();
+        if ($this->handler) {
+            $this->handler->close();
+        }
     }
 
     public function error() {
