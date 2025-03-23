@@ -27,7 +27,7 @@ if ($database->error()) {
 <body>
 <?php
     echo(
-        new Navbar(null)
+        new Navbar($user)
         .new StatusBar($success, $error)
     );
 ?>
