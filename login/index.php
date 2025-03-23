@@ -1,9 +1,12 @@
 <?php
-require_once($_SERVER["DOCUMENT_ROOT"]."/Model/User.php");
-require_once($_SERVER["DOCUMENT_ROOT"]."/Model/Navigator.php");
-require_once($_SERVER["DOCUMENT_ROOT"]."/View/Navbar.php");
-// require_once($_SERVER["DOCUMENT_ROOT"]."/View/StatusBar.php");
-require_once($_SERVER["DOCUMENT_ROOT"]."/View/Login.php");
+require_once($_SERVER["DOCUMENT_ROOT"]."/_Model/User.php");
+require_once($_SERVER["DOCUMENT_ROOT"]."/_Model/Navigator.php");
+require_once($_SERVER["DOCUMENT_ROOT"]."/_View/Navbar.php");
+require_once($_SERVER["DOCUMENT_ROOT"]."/_View/StatusBar.php");
+require_once($_SERVER["DOCUMENT_ROOT"]."/_View/Login.php");
+
+$error = null;
+$success = null;
 
 if (isset($_POST["username"], $_POST["password"])) {
     $database = new SQL();
@@ -30,19 +33,15 @@ if (isset($_POST["username"], $_POST["password"])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LPFS-Intranet</title>
-    <link rel="stylesheet" href="/asset/css/style.css">
-    <script src="/asset/js/statusbar.js"></script>
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <script src="/assets/js/statusbar.js"></script>
 </head>
 <body>
 <?php
 echo(
     new Navbar($user)
-    // .new StatusBar(
-        // $error ? StatusType::Error: ($success ? StatusType::Success : StatusType::None),
-        // $error ? $error : ($success ? $success : "")
-    // )
-    .new Login();
-
+    .new StatusBar($success, $error)
+    .new Login()
 );
 ?>
 </body>
