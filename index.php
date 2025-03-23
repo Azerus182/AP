@@ -3,6 +3,7 @@ require_once($_SERVER["DOCUMENT_ROOT"]."/_Model/User.php");
 require_once($_SERVER["DOCUMENT_ROOT"]."/_Model/Navigator.php");
 require_once($_SERVER["DOCUMENT_ROOT"]."/_View/StatusBar.php");
 require_once($_SERVER["DOCUMENT_ROOT"]."/_View/Navbar.php");
+require_once($_SERVER["DOCUMENT_ROOT"]."/_View/AppList.php");
 
 $error = null;
 $success = null;
@@ -10,6 +11,7 @@ $success = null;
 $database = new SQL();
 if ($database->error()) {
     $error = $database->error();
+    $role = null;
 } else {
     $users = new User($database);
     $user = $users->getUser(Navigator::get("token"));
@@ -29,6 +31,7 @@ if ($database->error()) {
     echo(
         new Navbar($user)
         .new StatusBar($success, $error)
+        .new AppList($user ? $user["username"] : null, $role)
     );
 ?>
 </body>
