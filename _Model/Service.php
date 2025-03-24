@@ -9,7 +9,7 @@ class Service {
     }
 
     public function listServices() {
-        $query = 'SELECT * FROM services WHERE name="'.$role.'";';
+        $query = 'SELECT * FROM services;';
 
         try {
             $services = $this->database->query($query);
@@ -19,7 +19,7 @@ class Service {
         return ($services);
     }
 
-    public function addServices($name) {
+    public function addService($name) {
         $query = 'INSERT INTO services (name) VALUES ("'.$name.'");';
 
         try {
@@ -39,6 +39,29 @@ class Service {
             return (__FUNCTION__.':'.$error->getMessage());
         }
         return ($services ? $services[0] : null);
+    }
+
+    public function renameService($id, $name) {
+        $query = 'UPDATE services SET name="'.$name.'" WHERE id='.$id.';';
+
+        try {
+            $this->database->update($query);
+        } catch (mysqli_sql_exception $error) {
+            return (__FUNCTION__.':'.$error->getMessage());
+        }
+        return (null);
+    }
+
+    public function delService($id) {
+        $query = 'DELETE FROM services WHERE id='.$id.';';
+
+        echo($query);
+        try {
+            $this->database->update($query);
+        } catch (mysqli_sql_exception $error) {
+            return (__FUNCTION__.':'.$error->getMessage());
+        }
+        return (null);
     }
 }
 ?>
