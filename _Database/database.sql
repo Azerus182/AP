@@ -16,6 +16,13 @@ CREATE TABLE users (
 );
 -- use Lpfs; select * from user;
 
+CREATE TABLE services (
+    id        INTEGER      AUTO_INCREMENT UNIQUE,
+    name      VARCHAR(128) NOT NULL UNIQUE,
+    PRIMARY KEY (id)
+);
+-- use Lpfs; select * from services;
+
 CREATE TABLE tokens (
     id           INTEGER     NOT NULL,
     token        VARCHAR(64) NOT NULL UNIQUE,
@@ -28,6 +35,7 @@ CREATE TABLE roles (
     id                      INTEGER      AUTO_INCREMENT UNIQUE,
     name                    VARCHAR(128) NOT NULL UNIQUE,
     edit_users              BOOLEAN      NOT NULL    DEFAULT     FALSE,
+    edit_services           BOOLEAN      NOT NULL    DEFAULT     FALSE,
     edit_roles              BOOLEAN      NOT NULL    DEFAULT     FALSE,
     edit_preadmitions       BOOLEAN      NOT NULL    DEFAULT     FALSE,
     view_all_preadmitions   BOOLEAN      NOT NULL    DEFAULT     FALSE,
