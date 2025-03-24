@@ -32,6 +32,9 @@ class AppList extends View {
         if ($this->role["edit_preadmitions"]) {
             $render .= $this->renderLink("/preadmission/", "Préadmission");
         }
+        if ($this->role["edit_services"]) {
+            $render .= $this->renderLink("/service_management/", "Editer les services");
+        }
         return ($render);
     }
 
