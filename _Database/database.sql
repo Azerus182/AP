@@ -40,7 +40,7 @@ CREATE TABLE preadmission (
     ssn             VARCHAR(15)  NOT NULL,
     type            BOOLEAN,
     doctor          INTEGER      NOT NULL,
-    room            BOOLEAN,
+    room            INTEGER,
     time            TIMESTAMP    NOT NULL,
     fName           VARCHAR(64)  NOT NULL,
     lName           VARCHAR(64)  NOT NULL,
@@ -64,7 +64,23 @@ CREATE TABLE preadmission (
     isPolicyHolder  BOOLEAN      NOT NULL,
     mutualName      VARCHAR(128),
     mutualNum       VARCHAR(128),
+
+    identityCard                INTEGER,
+    vitalCard                   INTEGER,
+    mutualCard                  INTEGER,
+    famillyBook                 INTEGER,
+    childAuthorization          INTEGER,
+    singleParentAuthorization   INTEGER,
+
     PRIMARY KEY (id, ssn, doctor)
 );
 -- use Lpfs; select * from preadmission;
+
+CREATE TABLE files (
+    id              INTEGER       AUTO_INCREMENT UNIQUE,
+    name            VARCHAR(256)  NOT NULL,
+    ext             VARCHAR(64)   NOT NULL,
+    PRIMARY KEY (id)
+);
+-- use Lpfs; select * from files;
 

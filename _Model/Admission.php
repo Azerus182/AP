@@ -13,27 +13,30 @@ class Admission {
         $birthday, $gender, $disabled, $address, $zipCode, $email,
         $phone, $contactLName, $contactFName, $contactAddress,
         $contactPhone, $trustedLName, $trustedFName, $trustedAddress,
-        $trustedPhone, $insuranceFund, $isPolicyHolder, $mutualName, $mutualNum
+        $trustedPhone, $insuranceFund, $isPolicyHolder, $mutualName, $mutualNum,
+        $identityCard, $vitalCard
     ) {
         $query =
         'INSERT INTO preadmission (
             ssn,type,doctor,room,time,fName,lName,mName,birthday,gender,
             disabled,address,zipCode,email,phone,contactLName,contactFName,
             contactAddress,contactPhone,trustedLName,trustedFName,trustedAddress,
-            trustedPhone,insuranceFund,isPolicyHolder,mutualName,mutualNum
+            trustedPhone,insuranceFund,isPolicyHolder,mutualName,mutualNum,
+            identityCard, vitalCard
         ) VALUES ("'.$ssn.'", "'.$type.'", "'.$doctor.'", "'.$room.'", "'.$time
         .'", "'.$fName.'", "'.$lName.'", "'.$mName.'", "'.$birthday.'", "'.$gender.'", "'
         .$disabled.'", "'.$address.'", "'.$zipCode.'", "'.$email.'", "'.$phone.'", "'
         .$contactLName.'", "'.$contactFName.'", "'.$contactAddress.'", "'
         .$contactPhone.'", "'.$trustedLName.'", "'.$trustedFName.'", "'
         .$trustedAddress.'", "'.$trustedPhone.'", "'.$insuranceFund.'", "'
-        .$isPolicyHolder.'", "'.$mutualName.'", "'.$mutualNum.'");';
+        .$isPolicyHolder.'", "'.$mutualName.'", "'.$mutualNum.'", '
+        .$identityCard.', '.$vitalCard.');';
 
-        try {
+        // try {
             $this->database->update($query);
-        } catch (mysqli_sql_exception $error) {
-            return (__FUNCTION__.':'.$error->getMessage());
-        }
+        // } catch (mysqli_sql_exception $error) {
+        //     return (__FUNCTION__.':'.$error->getMessage());
+        // }
         return (null);
     }
 
