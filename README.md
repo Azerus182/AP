@@ -4,17 +4,18 @@
 Ce projet est une application web de gestion de pré-admission appliqué à une clinique fictive.
 
 ### Mission 1 :
-Implémenter un schéma de base de donnés cohérent au format SQL.
+✅ Implémenter un schéma de base de donnés cohérent au format SQL.
 
 ### Mission 2 :
-Implémenter une page de connexion et une gestion de rôles.
+✅ Implémenter une page de connexion et une gestion de rôles.
 
 ### Mission 3 :
-Implémenter un formulaire de pré-admission.
+✅ Implémenter un formulaire de pré-admission.
 
 ### Mission 4 :
-Implémenter une zone d'administration afin de ajouter/modifier/supprimer un service, ajouter/modifier/supprimer un médecin.
-De plus, il faut ajouter les rôles d'administration (comptable, directeur...).
+✅ Implémenter une zone d'administration afin de ajouter/modifier/supprimer un service.
+Implémenter une zone d'administration afin de ajouter/modifier/supprimer un médecin.
+Ajouter les rôles d'administration (comptable, directeur...).
 
 ### Mission 5 :
 Implémenter une fonction de visualisation de rendez-vous du service attribué de manière mensuelle, à destination des médecins/chefs de services...
