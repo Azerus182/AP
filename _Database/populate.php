@@ -9,8 +9,8 @@ $success = null;
 $users = new User($database);
 $services = new Service($database);
 
-$services->addServices("Radiologie");
-$services->addServices("Neurologie");
+$services->addService("Radiologie");
+$services->addService("Neurologie");
 
 $error .= $users->register("Secretaire", "password", "Secretaire", "Lastname");
 $error .= $users->register("Administrateur", "password", "Admin", "Lastname");
