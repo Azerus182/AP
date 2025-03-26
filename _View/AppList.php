@@ -18,7 +18,7 @@ class AppList extends View {
         $render = "";
 
         if ($this->username == null) {
-            $render .= $this->renderLink("/login/", "Connection");
+            $render .= $this->renderLink("/login/", "Connexion");
         }
         if ($this->role == null) {
             return ($render);
@@ -41,7 +41,7 @@ class AppList extends View {
     public function __toString() {
         return ('
             <div class="app-list">
-                <p class="greeter">Bonjour '.($this->username ? $this->username : "").'</p>
+                <p class="greeter">Bonjour'.($this->username ? " " + $this->username : "").'</p>
                 <div class="links">
                     '.$this->genList().'
                 </div>
