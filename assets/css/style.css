@@ -231,4 +231,21 @@
   display: none;
 }
 
+.user-management {
+  width: 100%;
+}
+.user-management .title {
+  padding: 2em;
+}
+.user-management > div {
+  padding: 1em;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.user-management .hidden {
+  display: none;
+}
+
 /*# sourceMappingURL=style.css.map */

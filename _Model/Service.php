@@ -30,7 +30,18 @@ class Service {
         return (null);
     }
 
-    public function getServices($name) {
+    public function getServices() {
+        $query = 'SELECT * FROM services;';
+
+        try {
+            $services = $this->database->query($query);
+        } catch (mysqli_sql_exception $error) {
+            return (__FUNCTION__.':'.$error->getMessage());
+        }
+        return ($services);
+    }
+
+    public function getService($name) {
         $query = 'SELECT * FROM services WHERE name="'.$name.'";';
 
         try {

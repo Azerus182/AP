@@ -121,6 +121,17 @@ class User {
         return ($users);
     }
 
+    public function getUsers() {
+        $query = 'SELECT * FROM users;';
+
+        try {
+            $users = $this->database->query($query);
+        } catch (mysqli_sql_exception $error) {
+            return (__FUNCTION__.':'.$error->getMessage());
+        }
+        return ($users);
+    }
+
     // Role
     public function createRole($name) {
         $query = 'INSERT INTO roles (name) VALUES ("'.$name.'");';
@@ -133,18 +144,6 @@ class User {
         return (null);
     }
 
-    public function getRoles() {
-        $query = 'SELECT * FROM roles;';
-        $roles = null;
-
-        try {
-            $roles = $this->database->query($query);
-        } catch (mysqli_sql_exception $error) {
-            return (__FUNCTION__.':'.$error->getMessage());
-        }
-        return ($roles);
-    }
-
     public function getRole($id) {
         $query = 'SELECT * FROM roles WHERE id='.$id.';';
         $role = null;
@@ -155,6 +154,17 @@ class User {
             return (__FUNCTION__.':'.$error->getMessage());
         }
         return ($role ? $role[0] : null);
+    }
+
+    public function getRoles() {
+        $query = 'SELECT * FROM roles;';
+
+        try {
+            $roles = $this->database->query($query);
+        } catch (mysqli_sql_exception $error) {
+            return (__FUNCTION__.':'.$error->getMessage());
+        }
+        return ($roles);
     }
 
     public function setRolePermission($name, $permission, $canDo) {
