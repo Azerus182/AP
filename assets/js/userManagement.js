@@ -5,7 +5,9 @@ function saveNew(button) {
     fetch('/api/user/', {
         method: 'POST',
         body: data
-    })
+    }).then(() => {
+        window.location.reload();
+    });
 }
 
 function update(button, action) {
@@ -20,5 +22,7 @@ function update(button, action) {
     fetch('/api/user/', {
         method: 'POST',
         body: data
+    }).then(() => {
+        window.location.reload();
     });
 }
