@@ -77,8 +77,23 @@ class User {
         return ($id[0]["id"]);
     }
 
-    public function delete($username) {
-        $query = 'DELETE FROM users WHERE username='.$username.';';
+    public function modify($id, $username, $password, $firstname, $lastname) {
+        $query = 'UPDATE users SET username="'.$username.'",firstname="'.$firstname.'",lastname="'.$lastname.'" WHERE id="'.$id.'";';
+
+        $this->database->update($query);
+
+        if ($password != null && $password != "") {
+            $salt = $this->database->query('SELECT salt from users WHERE id='.$id.';')[0]["salt"];
+            var_dump($salt);
+            $password = $this->hashPassword($password, $salt);
+            $query = 'UPDATE users SET password="'.$password.'" WHERE id="'.$id.'";';
+            $this->database->update($query);
+        }
+        return (null);
+    }
+
+    public function delete($id) {
+        $query = 'DELETE FROM users WHERE id='.$id.';';
 
         try {
             $this->database->update($query);

@@ -39,18 +39,34 @@ if (isset($_POST["action"])) {
                 $users->setRole($id, $_POST["role"]);
             }
         }
-        // else {
-        //     // erreur
-        // }
+    } else if ($_POST["action"] == "saveUser") {
+        if (isset($_POST["id"],
+            $_POST["username"],
+            $_POST["firstname"],
+            $_POST["lastname"]
+        )) {
+            $id = trim($_POST["id"]);
+            $username = trim($_POST["username"]);
+            $firstname = trim($_POST["firstname"]);
+            $lastname = trim($_POST["lastname"]);
+            $password = trim($_POST["password"]);
+
+            $users->modify($id, $username, $password, $firstname, $lastname);
+            if (isset($_POST["service"])) {
+                $users->setService($id, $_POST["service"]);
+            } else {
+                $users->setService($id, "NULL");
+            }
+            if (isset($_POST["role"])) {
+                $users->setRole($id, $_POST["role"]);
+            } else {
+                $users->setRole($id, "NULL");
+            }
+        }
+    } else if ($_POST["action"] == "delUser") {
+        if (isset($_POST["id"])) {
+            $users->delete(trim($_POST["id"]));
+        }
     }
 }
-
-//     if ($_POST["action"] == "save") {
-//         $services->renameService($_POST["id"], $_POST["name"]);
-//     } else if ($_POST["action"] == "del") {
-//         $services->delService($_POST["id"]);
-//     } else if ($_POST["action"] == "del") {
-//         $services->delService($_POST["id"]);
-//     }
-// }
-?>qzdqzd
+?>
