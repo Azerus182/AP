@@ -29,4 +29,9 @@ $error .= $users->setRolePermission("Admin", "edit_services", true);
 $error .= $users->setRole($users->searchUser("Secretaire")["id"], $users->searchRole("Secretaire")["id"]);
 $error .= $users->setRole($users->searchUser("Administrateur")["id"], $users->searchRole("Admin")["id"]);
 $error .= $users->setRole($users->searchUser("Medecin")["id"], $users->searchRole("Medecin")["id"]);
+
+$error .= $users->setService($users->searchUser("Secretaire")["id"], $services->getService("Radiologie")["id"]);
+$error .= $users->setService($users->searchUser("Administrateur")["id"], $services->getService("Radiologie")["id"]);
+$error .= $users->setService($users->searchUser("Medecin")["id"], $services->getService("Neurologie")["id"]);
+
 ?>

@@ -51,10 +51,10 @@ class UserManagement extends View {
                 <th>'.$this->renderService($this->services, $users["service"]).'</th>
                 <th>'.$this->renderRole($this->roles, $users["role"]).'</th>
                 <th>
-                    <button onclick="update(this)" value="save" class="save">
+                    <button onclick="update(this, \'\')" value="save" class="save">
                         <img src="/assets/icon/check.svg" alt="X">
                     </button>
-                    <button onclick="update(this)" value="del" class="del">
+                    <button onclick="update(this, \'\')" value="del" class="del">
                         <img src="/assets/icon/close.svg" alt="X">
                     </button>
                 </th>
@@ -99,7 +99,7 @@ class UserManagement extends View {
                         <th>'.$this->renderService($this->services, null).'</th>
                         <th>'.$this->renderRole($this->roles, null).'</th>
                         <th>
-                            <button onclick="update(this)" value="save" class="save">
+                            <button onclick="update(this, \'newUser\')" value="save" class="save">
                                 <img src="/assets/icon/check.svg" alt="X">
                             </button>
                         </th>

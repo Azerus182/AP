@@ -8,11 +8,12 @@ function saveNew(button) {
     })
 }
 
-function update(button) {
+function update(button, action) {
     var data = new FormData();
+    var user = button.parentElement.parentElement;
 
-    data.append("action", "updateUser");
-    button.parentElement.querySelectorAll("input").forEach(input => {
+    data.append("action", action);
+    user.querySelectorAll("input, select").forEach(input => {
         data.append(input.name, input.value);
     });
     console.log(data);

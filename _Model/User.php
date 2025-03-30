@@ -43,7 +43,7 @@ class User {
         try {
             $this->database->update($query);
         } catch (mysqli_sql_exception $error) {
-            return (__FUNCTION__.':'.$error->getMessage());
+            return (null);
         }
         return ($token);
     }
@@ -54,7 +54,7 @@ class User {
         try {
             $this->database->update($query);
         } catch (mysqli_sql_exception $error) {
-            return (__FUNCTION__.':'.$error->getMessage());
+            return (null);
         }
         return (null);
     }
@@ -67,14 +67,14 @@ class User {
             .'username, firstname, lastname, password, salt'
         .') VALUES ("'
             .$username.'", "'.$firstname.'", "'.$lastname.'", "'.$password.'", "'.$salt
-        .'");';
+        .'") RETURNING id;';
 
         try {
-            $this->database->update($query);
+            $id = $this->database->query($query);
         } catch (mysqli_sql_exception $error) {
-            return (__FUNCTION__.':'.$error->getMessage());
+            return (null);
         }
-        return (null);
+        return ($id[0]["id"]);
     }
 
     public function delete($username) {
@@ -83,7 +83,7 @@ class User {
         try {
             $this->database->update($query);
         } catch (mysqli_sql_exception $error) {
-            return (__FUNCTION__.':'.$error->getMessage());
+            return (null);
         }
         return (null);
     }
@@ -94,7 +94,18 @@ class User {
         try {
             $this->database->update($query);
         } catch (mysqli_sql_exception $error) {
-            return (__FUNCTION__.':'.$error->getMessage());
+            return (null);
+        }
+        return (null);
+    }
+
+    public function setService($userId, $serviceId) {
+        $query = 'UPDATE users SET service='.$serviceId.' WHERE id='.$userId.';';
+
+        try {
+            $this->database->update($query);
+        } catch (mysqli_sql_exception $error) {
+            return (null);
         }
         return (null);
     }
@@ -105,7 +116,7 @@ class User {
         try {
             $user = $this->database->query($query);
         } catch (mysqli_sql_exception $error) {
-            return (__FUNCTION__.':'.$error->getMessage());
+            return (null);
         }
         return ($user ? $user[0] : null);
     }
@@ -116,7 +127,7 @@ class User {
         try {
             $users = $this->database->query($query);
         } catch (mysqli_sql_exception $error) {
-            return (__FUNCTION__.':'.$error->getMessage());
+            return (null);
         }
         return ($users);
     }
@@ -127,7 +138,7 @@ class User {
         try {
             $users = $this->database->query($query);
         } catch (mysqli_sql_exception $error) {
-            return (__FUNCTION__.':'.$error->getMessage());
+            return (null);
         }
         return ($users);
     }
@@ -139,7 +150,7 @@ class User {
         try {
             $this->database->update($query);
         } catch (mysqli_sql_exception $error) {
-            return (__FUNCTION__.':'.$error->getMessage());
+            return (null);
         }
         return (null);
     }
@@ -151,7 +162,7 @@ class User {
         try {
             $role = $this->database->query($query);
         } catch (mysqli_sql_exception $error) {
-            return (__FUNCTION__.':'.$error->getMessage());
+            return (null);
         }
         return ($role ? $role[0] : null);
     }
@@ -162,7 +173,7 @@ class User {
         try {
             $roles = $this->database->query($query);
         } catch (mysqli_sql_exception $error) {
-            return (__FUNCTION__.':'.$error->getMessage());
+            return (null);
         }
         return ($roles);
     }
@@ -173,7 +184,7 @@ class User {
         try {
             $this->database->update($query);
         } catch (mysqli_sql_exception $error) {
-            return (__FUNCTION__.':'.$error->getMessage());
+            return (null);
         }
         return (null);
     }
@@ -184,7 +195,7 @@ class User {
         try {
             $roles = $this->database->query($query);
         } catch (mysqli_sql_exception $error) {
-            return (__FUNCTION__.':'.$error->getMessage());
+            return (null);
         }
         return ($roles ? $roles[0] : null);
     }
