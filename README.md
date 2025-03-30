@@ -14,7 +14,7 @@ Ce projet est une application web de gestion de pré-admission appliqué à une 
 
 ### Mission 4 :
 ✅ Implémenter une zone d'administration afin de ajouter/modifier/supprimer un service.
-Implémenter une zone d'administration afin de ajouter/modifier/supprimer un médecin.
+✅ Implémenter une zone d'administration afin de ajouter/modifier/supprimer un utilisateur.
 Ajouter les rôles d'administration (comptable, directeur...).
 
 ### Mission 5 :
