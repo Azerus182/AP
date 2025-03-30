@@ -19,12 +19,18 @@ $error .= $users->register("Medecin", "password", "Medecin", "Lastname");
 $error .= $users->createRole("Admin");
 $error .= $users->createRole("Secretaire");
 $error .= $users->createRole("Medecin");
+$error .= $users->createRole("Comptable");
+$error .= $users->createRole("Directeur");
 
 $error .= $users->setRolePermission("Secretaire", "edit_preadmitions", true);
 $error .= $users->setRolePermission("Admin", "edit_users", true);
 $error .= $users->setRolePermission("Admin", "edit_roles", true);
-$error .= $users->setRolePermission("Admin", "edit_preadmitions", true);
 $error .= $users->setRolePermission("Admin", "edit_services", true);
+
+$error .= $users->setRolePermission("Directeur", "edit_users", true);
+$error .= $users->setRolePermission("Directeur", "edit_roles", true);
+$error .= $users->setRolePermission("Directeur", "edit_preadmitions", true);
+$error .= $users->setRolePermission("Directeur", "edit_services", true);
 
 $error .= $users->setRole($users->searchUser("Secretaire")["id"], $users->searchRole("Secretaire")["id"]);
 $error .= $users->setRole($users->searchUser("Administrateur")["id"], $users->searchRole("Admin")["id"]);
@@ -33,5 +39,4 @@ $error .= $users->setRole($users->searchUser("Medecin")["id"], $users->searchRol
 $error .= $users->setService($users->searchUser("Secretaire")["id"], $services->getService("Radiologie")["id"]);
 $error .= $users->setService($users->searchUser("Administrateur")["id"], $services->getService("Radiologie")["id"]);
 $error .= $users->setService($users->searchUser("Medecin")["id"], $services->getService("Neurologie")["id"]);
-
 ?>
