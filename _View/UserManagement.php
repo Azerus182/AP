@@ -20,7 +20,7 @@ class UserManagement extends View {
         }
         return ('
             <select name="service">
-                <option value=""></option>
+                <option value="">Aucun service</option>
                 '.$render.'
             </select>
         ');
@@ -34,7 +34,7 @@ class UserManagement extends View {
         }
         return ('
             <select name="role">
-                <option value=""></option>
+                <option value="">Aucun role</option>
                 '.$render.'
             </select>
         ');
@@ -42,34 +42,23 @@ class UserManagement extends View {
 
     private function renderUser($users) {
         return ('
-            <div>
-                <input name="id" class="hidden" type="text" value="'.$users["id"].'">
-
-                <label for="username">Utilisateur</label>
-                <input name="username" type="text" value="'.$users["username"].'">
-
-                <label for="firstname">Prénom</label>
-                <input name="firstname" type="text" value="'.$users["firstname"].'">
-
-                <label for="lastname">Nom</label>
-                <input name="lastname" type="text" value="'.$users["lastname"].'">
-
-                <label for="password">Mot de passe</label>
-                <input name="password" type="text" value="">
-
-                <label for="service">Service</label>
-                '.$this->renderService($this->services, $users["service"]).'
-
-                <label for="role">Role</label>
-                '.$this->renderRole($this->roles, $users["role"]).'
-
-                <button onclick="update(this)" value="save" class="save">
-                    <img src="/assets/icon/check.svg" alt="X">
-                </button>
-                <button onclick="update(this)" value="del" class="del">
-                    <img src="/assets/icon/close.svg" alt="X">
-                </button>
-            </div>
+            <tr>
+                <th class="hidden"><input name="id" class="hidden" type="text" value="'.$users["id"].'"></th>
+                <th><input name="username" type="text" value="'.$users["username"].'"></th>
+                <th><input name="firstname" type="text" value="'.$users["firstname"].'"></th>
+                <th><input name="lastname" type="text" value="'.$users["lastname"].'"></th>
+                <th><input name="password" type="text" value="" placeholder="pas de changement"></th>
+                <th>'.$this->renderService($this->services, $users["service"]).'</th>
+                <th>'.$this->renderRole($this->roles, $users["role"]).'</th>
+                <th>
+                    <button onclick="update(this)" value="save" class="save">
+                        <img src="/assets/icon/check.svg" alt="X">
+                    </button>
+                    <button onclick="update(this)" value="del" class="del">
+                        <img src="/assets/icon/close.svg" alt="X">
+                    </button>
+                </th>
+            </tr>
         ');
     }
 
@@ -86,28 +75,36 @@ class UserManagement extends View {
         return ('
             <div class="user-management">
                 <p class="title">Liste des utilisateurs</p>
-                <div class="links">
+                <table>
+                    <tr>
+                        <th class="hidden"></th>
+                        <th>Utilisateur</th>
+                        <th>Prenom</th>
+                        <th>Nom</th>
+                        <th>Mots de passe</th>
+                        <th>Service</th>
+                        <th>Role</th>
+                        <th></th>
+                    </tr>
                     '.$this->genList().'
-                </div>
+                </table>
                 <p class="title">Nouvel utilisateur</p>
-                <div>
-                    <label for="firstname">Prénom</label>
-                    <input name="firstname" type="text" value="">
-                    <label for="lastname">Nom</label>
-                    <input name="lastname" type="text" value="">
-                    <label for="password">Mot de passe</label>
-                    <input name="password" type="text" value="">
-                    <label for="service">Service</label>
-                    '.$this->renderService($this->services, null).'
-                    <label for="role">Role</label>
-                    '.$this->renderRole($this->roles, null).'
-                    <button onclick="update(this)" value="save" class="save">
-                        <img src="/assets/icon/check.svg" alt="X">
-                    </button>
-                    <button onclick="update(this)" value="del" class="del">
-                        <img src="/assets/icon/close.svg" alt="X">
-                    </button>
-                </div>
+                <table>
+                    <tr>
+                        <th class="hidden"><input name="id" class="hidden" type="text" value=""></th>
+                        <th><input name="username" type="text" value="" placeholder="Utilisateur"></th>
+                        <th><input name="firstname" type="text" value="" placeholder="Prénom"></th>
+                        <th><input name="lastname" type="text" value="" placeholder="Nom"></th>
+                        <th><input name="password" type="text" value="" placeholder="Mot de passe"></th>
+                        <th>'.$this->renderService($this->services, null).'</th>
+                        <th>'.$this->renderRole($this->roles, null).'</th>
+                        <th>
+                            <button onclick="update(this)" value="save" class="save">
+                                <img src="/assets/icon/check.svg" alt="X">
+                            </button>
+                        </th>
+                    </tr>
+                </table>
             </div>
         ');
     }

@@ -2,19 +2,44 @@
 
 .user-management {
     width: 100%;
+    padding: 2em;
 
-    .title {
-        padding: 2em;
-    }
-    > div {
-        padding: 1em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    table {
         display: flex;
         flex-direction: row;
-        align-items: center;
-        flex-wrap: wrap;
+
+        > * {
+            width: 100%;
+        }
+    }
+
+    tbody, table {
+        width: fit-content;
+    }
+
+    .title {
+        padding: 1em;
+        width: 100%;
     }
 
     .hidden {
         display: none;
+        width: 0px;
+    }
+
+    button {
+        border: 0;
+    }
+
+    .save {
+        background-color: color.$success;
+    }
+
+    .del {
+        background-color: color.$error;
     }
 }

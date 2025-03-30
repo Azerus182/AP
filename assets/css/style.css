@@ -233,19 +233,37 @@
 
 .user-management {
   width: 100%;
-}
-.user-management .title {
   padding: 2em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-.user-management > div {
-  padding: 1em;
+.user-management table {
   display: flex;
   flex-direction: row;
-  align-items: center;
-  flex-wrap: wrap;
+}
+.user-management table > * {
+  width: 100%;
+}
+.user-management tbody, .user-management table {
+  width: fit-content;
+}
+.user-management .title {
+  padding: 1em;
+  width: 100%;
 }
 .user-management .hidden {
   display: none;
+  width: 0px;
+}
+.user-management button {
+  border: 0;
+}
+.user-management .save {
+  background-color: rgb(61, 202, 0);
+}
+.user-management .del {
+  background-color: rgb(255, 0, 0);
 }
 
 /*# sourceMappingURL=style.css.map */

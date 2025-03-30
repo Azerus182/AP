@@ -31,6 +31,7 @@ if ($user == null || $role["edit_users"] == false) {
     <title>LPFS-Intranet</title>
     <link rel="stylesheet" href="/assets/css/style.css">
     <script src="/assets/js/statusbar.js"></script>
+    <script src="/assets/js/userManagement.js"></script>
 </head>
 <body>
 <?php
