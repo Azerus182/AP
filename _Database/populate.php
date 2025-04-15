@@ -11,6 +11,7 @@ $services = new Service($database);
 
 $services->addService("Radiologie");
 $services->addService("Chirurgie");
+$services->addService("Neurologie");
 
 $users->createRole("Directeur");
 $users->setRolePermission("Directeur", "edit_users", true);
@@ -22,29 +23,35 @@ $users->register("v.huppe", "|sAswQt5Y|", "Victor", "Huppe");
 $users->setRole($users->searchUser("v.huppe")["id"], $users->searchRole("Directeur")["id"]);
 
 
-$services->addService("Neurologie");
 $users->createRole("Chef de service");
 $users->setRolePermission("Chef de service", "edit_preadmitions", true);
-$users->register("h.faure", "|sAswQt5Y|", "Hugues", "Faure");
+$users->register("h.faure", "dW5pc3RkLmg=", "Hugues", "Faure");
 $users->setService($users->searchUser("h.faure")["id"], $services->getService("Neurologie")["id"]);
 $users->setRole($users->searchUser("h.faure")["id"], $users->searchRole("Chef de service")["id"]);
 
 $users->register("f.marquis", "|sAswQt5Y|", "Françoise", "Marquis");
-$users->setService($users->searchUser("f.marquis")["id"], $services->getService("Radiologie")["id"]);
+$users->setService($users->searchUser("f.marquis")["id"], $services->getService("Chirurgie")["id"]);
 $users->setRole($users->searchUser("f.marquis")["id"], $users->searchRole("Chef de service")["id"]);
 
 $users->register("a.covillon", "|sAswQt5Y|", "Alexandre", "Covillon");
-$users->setService($users->searchUser("f.marquis")["id"], $services->getService("Radiologie")["id"]);
-$users->setRole($users->searchUser("f.marquis")["id"], $users->searchRole("Chef de service")["id"]);
+$users->setService($users->searchUser("a.covillon")["id"], $services->getService("Radiologie")["id"]);
+$users->setRole($users->searchUser("a.covillon")["id"], $users->searchRole("Chef de service")["id"]);
 
 $users->createRole("Medecin");
 $users->setRolePermission("Medecin", "edit_preadmitions", true);
-$users->register("g.house", "|sAswQt5Y|", "Gregory", "House");
+$users->register("g.house", "@mGH2012s3", "Gregory", "House");
 $users->setService($users->searchUser("g.house")["id"], $services->getService("Radiologie")["id"]);
 $users->setRole($users->searchUser("g.house")["id"], $users->searchRole("Medecin")["id"]);
 
 $users->createRole("Infirmier");
 $users->createRole("Aide-soignant");
+
+
+$users->createRole("Secretaire");
+$users->setRolePermission("Secretaire", "edit_preadmitions", true);
+
+$users->register("d.martins", "OjpTS1NLVQ==1", "Diane", "Martins");
+$users->setRole($users->searchUser("d.martins")["id"], $users->searchRole("Secretaire")["id"]);
 
 
 $users->createRole("Responsable Agents Techniques");
@@ -66,7 +73,7 @@ $users->createRole("Admin");
 $users->register("a.masson", "|sAswQt5Y|", "Antoine", "Masson");
 $users->register("m.gousse", "|sAswQt5Y|", "Marc", "Gousse");
 $users->register("r.parent", "|sAswQt5Y|", "Roger", "Parent");
-$users->register("s.Poirier", "|sAswQt5Y|", "Sabine", "Poirier");
+$users->register("s.poirier", "|sAswQt5Y|", "Sabine", "Poirier");
 $users->register("a.racine", "|sAswQt5Y|", "Alexis", "Racine");
 $users->register("d.guerette", "|sAswQt5Y|", "David", "Guerette");
 $users->setRole($users->searchUser("a.masson")["id"], $users->searchRole("Admin")["id"]);
