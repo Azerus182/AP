@@ -1,10 +1,3 @@
-function showError(text) {
-    const bar = document.querySelector(".statusbar > .bar");
-    bar.classList.add("error");
-    bar.classList.remove("none");
-    bar.querySelector("p").innerHTML = text;
-}
-
 function saveNew(button) {
     var data = new FormData();
 

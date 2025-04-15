@@ -76,5 +76,16 @@
         width: 100%;
 
         background-color: color.$one;
+
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+
+        button {
+            border: 0;
+            border-radius: 3px;
+            margin: 1em;
+        }
     }
 }

@@ -1,32 +1,40 @@
 var preadmissionPage = 1;
 
 function preadmissionGoToPage(page) {
+    let index = 0;
     const pages = document.querySelectorAll(".preadmission > .pages > *");
 
     document.querySelector(".preadmission > .pages > .focused").classList.remove("focused");
     pages[page - 1].classList.add("focused");
-}
-
-function showError(text) {
-    const bar = document.querySelector(".statusbar > .bar");
-    bar.classList.add("error");
-    bar.classList.remove("none");
-    bar.querySelector("p").innerHTML = text;
+    for (let head of document.querySelectorAll(".preadmission > .header > p")) {
+        if (index >= page) {
+            head.classList.remove("valid");
+        } else {
+            head.classList.add("valid");
+        }
+        index++;
+    }
 }
 
 function preadmissionCheckCurrentPage() {
     if (null != document.querySelector(".preadmission > .pages > .focused *:invalid")) {
         showError("Veillez inserer toutes les informations requises.")
-        return (true);
+        // return (true);
     }
     return (false);
 }
 
 function preadmissionPageNext() {
+    var lenght = document.querySelectorAll(".pages > .page").length;
+
     if (preadmissionCheckCurrentPage()) {
         return;
     }
-    preadmissionPage = preadmissionPage < 5 ? preadmissionPage + 1 : preadmissionPage;
+    if (preadmissionPage < lenght) {
+        preadmissionPage++;
+    } else {
+        return;
+    }
     preadmissionGoToPage(preadmissionPage);
 }
 
@@ -39,21 +47,21 @@ function setChildMod(age) {
     const birthday = new Date(age);
     const now = new Date();
 
-    // Calculate the adult birthday exactly 18 years in the future based on the current date
-    const adultBirthday = new Date(now.getFullYear() + 18, now.getMonth(), now.getDate());
+
+    const adultBirthday = new Date(now.getFullYear() - 18, now.getMonth(), now.getDate());
 
     const pagesElements = document.querySelectorAll(".preadmission .minor, .preadmission .minor-pass");
     if (adultBirthday > birthday) {
+        console.log("adult mod");
         pagesElements.forEach(element => {
             element.classList.add("minor");
-            // Check if class exists before removing to avoid errors
             if (!element.classList.contains('minor-pass')) {
                 element.classList.remove('minor-pass');
             }
         });
     } else {
+        console.log("child mod");
         pagesElements.forEach(element => {
-            // Check if class exists before adding to avoid errors
             if (element.classList.contains('minor-pass')) {
                 element.classList.remove("minor");
             } else {

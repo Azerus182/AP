@@ -90,7 +90,7 @@ class Preadmission extends View {
                         <label for="firstname">Prénom: *</label>
                         <input type="text" name="firstname" required>
                         <label for="birthday">Date de naissance: *</label>
-                        <input type="date" name="birthday" required onchange="setChildMod(this)">
+                        <input type="date" name="birthday" required onchange="setChildMod(this.value)">
                         <label for="address">Adresse: *</label>
                         <input type="text" name="address" required>
                         <label for="zipCode">Code Postal: *</label>

@@ -25,6 +25,7 @@ if ($database->error()) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LPFS-Intranet</title>
     <link rel="stylesheet" href="/assets/css/style.css">
+    <script src="/assets/js/statusbar.js"></script>
 </head>
 <body>
 <?php
