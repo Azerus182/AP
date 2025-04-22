@@ -19,7 +19,7 @@ function preadmissionGoToPage(page) {
 function preadmissionCheckCurrentPage() {
     if (null != document.querySelector(".preadmission > .pages > .focused *:invalid")) {
         showError("Veillez inserer toutes les informations requises.")
-        // return (true);
+        return (true);
     }
     return (false);
 }
