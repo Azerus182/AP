@@ -88,4 +88,10 @@
             margin: 1em;
         }
     }
+
+    input, select {
+        &:invalid {
+            border: color.$error solid 1px;
+        }
+    }
 }

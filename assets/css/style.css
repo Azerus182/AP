@@ -196,6 +196,9 @@
   border-radius: 3px;
   margin: 1em;
 }
+.preadmission input:invalid, .preadmission select:invalid {
+  border: rgb(255, 0, 0) solid 1px;
+}
 
 .service-management {
   width: 100%;

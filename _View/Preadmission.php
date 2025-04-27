@@ -37,7 +37,7 @@ class Preadmission extends View {
                             <option value="1">Hospitalisation</option>
                         </select>
                         <label for="day">Date d\'hospitalisation: *</label>
-                        <input type="date" name="day" required>
+                        <input type="date" name="day" min="'.date('Y-m-d').'" required>
                         <label for="time">Heure d\'hospitalisation: *</label>
                         <input type="time" name="time" required>
                         <label for="medic">Nom du médecin: *</label>
@@ -51,7 +51,19 @@ class Preadmission extends View {
                         <label for="insuranceFund">Organisme de sécurité sociale / Nom de la caisse d\'assurance maladie: *</label>
                         <input type="text" name="insuranceFund" required>
                         <label for="ssn">Numérode sécurité sociale: *</label>
-                        <input type="text" name="ssn" required>
+                        <input type="text" name="ssn" placeholder="123456789012345" pattern="^[1-2]{1}[0-9]{2}[0-1]{1}[0-9]{1}[0-9a-zA-Z]{2}[0-9]{8}$" required>'
+
+                        // [1-2]{1}         Sexe
+                        // [0-9]{2}         Année de naissance
+                        // [0-1]{1}[0-9]{1} Mois de naissance
+                        // [0-9a-zA-Z]{2}   Departement de naissance
+                        // [0-9]{3}         Commune de naissance
+                        // [0-9]{3}         Ordre d'enregistrement
+                        // [0-9]{2}         Clé de sécurité
+
+                        // Simplified:
+                        // [1-2]{1}[0-9]{2}[0-1]{1}[0-9]{1}[0-9a-zA-Z]{2}[0-9]{8}
+                        .'
                         <label for="patientIsPolicyHolder">Le patient est l\'assuré: *</label>
                         <select name="patientIsPolicyHolder" required>
                             <option value="" disabled selected>Choix</option>
@@ -90,17 +102,17 @@ class Preadmission extends View {
                         <label for="firstname">Prénom: *</label>
                         <input type="text" name="firstname" required>
                         <label for="birthday">Date de naissance: *</label>
-                        <input type="date" name="birthday" required onchange="setChildMod(this.value)">
+                        <input type="date" name="birthday" required onchange="setChildMod(this.value)" max="'.date('Y-m-d').'">
                         <label for="address">Adresse: *</label>
                         <input type="text" name="address" required>
                         <label for="zipCode">Code Postal: *</label>
-                        <input type="text" name="zipCode" required>
+                        <input type="text" name="zipCode" pattern="[0-9]{5}" required>
                         <label for="city">Ville: *</label>
                         <input type="text" name="city" required>
                         <label for="email">Email: *</label>
-                        <input type="text" name="email" required>
+                        <input type="email" name="email" required>
                         <label for="phone">Telephone: *</label>
-                        <input type="text" name="phone" required>
+                        <input type="text" name="phone" pattern="^[0-9]{10}$" required>
                     </div>
                     <div class="page" id="pageContact">
                         <p class="title">Personne à contacter</p>
