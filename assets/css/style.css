@@ -182,6 +182,9 @@
 .preadmission .pages .page.focused {
   display: flex;
 }
+.preadmission .pages .page .hidden {
+  display: none;
+}
 .preadmission .footer {
   height: 10%;
   width: 100%;

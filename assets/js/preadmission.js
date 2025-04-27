@@ -43,32 +43,45 @@ function preadmissionPagePrevious() {
     preadmissionGoToPage(preadmissionPage);
 }
 
-function setChildMod(age) {
-    const birthday = new Date(age);
-    const now = new Date();
+function setChildMod(birth) {
+    const minorBlock = document.querySelector(".preadmission #pageFiles > .minor");
+    const birthday = new Date(birth);
+    const adultBirthday = new Date(
+        new Date().getFullYear() - 18,
+        new Date().getMonth(),
+        new Date().getDate()
+    );
 
-
-    const adultBirthday = new Date(now.getFullYear() - 18, now.getMonth(), now.getDate());
-
-    const pagesElements = document.querySelectorAll(".preadmission .minor, .preadmission .minor-pass");
-    if (adultBirthday > birthday) {
-        console.log("adult mod");
-        pagesElements.forEach(element => {
-            element.classList.add("minor");
-            if (!element.classList.contains('minor-pass')) {
-                element.classList.remove('minor-pass');
-            }
-        });
+    if (birthday > adultBirthday) {
+        console.log("Child");
+        if (minorBlock.classList.contains("hidden") == true) {
+            minorBlock.classList.remove("hidden");
+        }
     } else {
-        console.log("child mod");
-        pagesElements.forEach(element => {
-            if (element.classList.contains('minor-pass')) {
-                element.classList.remove("minor");
-            } else {
-                element.classList.add("minor");
-            }
-        });
+        console.log("Adult");
+        if (minorBlock.classList.contains("hidden") == false) {
+            minorBlock.classList.add("hidden");
+        }
     }
+
+    // if (adultBirthday > birthday) {
+    //     console.log("adult mod");
+    //     pagesElements.forEach(element => {
+    //         element.classList.add("minor");
+    //         if (!element.classList.contains('minor-pass')) {
+    //             element.classList.remove('minor-pass');
+    //         }
+    //     });
+    // } else {
+    //     console.log("child mod");
+    //     pagesElements.forEach(element => {
+    //         if (element.classList.contains('minor-pass')) {
+    //             element.classList.remove("minor");
+    //         } else {
+    //             element.classList.add("minor");
+    //         }
+    //     });
+    // }
 }
 
 function getDataFromElement(elem) {
