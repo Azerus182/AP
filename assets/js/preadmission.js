@@ -63,25 +63,6 @@ function setChildMod(birth) {
             minorBlock.classList.add("hidden");
         }
     }
-
-    // if (adultBirthday > birthday) {
-    //     console.log("adult mod");
-    //     pagesElements.forEach(element => {
-    //         element.classList.add("minor");
-    //         if (!element.classList.contains('minor-pass')) {
-    //             element.classList.remove('minor-pass');
-    //         }
-    //     });
-    // } else {
-    //     console.log("child mod");
-    //     pagesElements.forEach(element => {
-    //         if (element.classList.contains('minor-pass')) {
-    //             element.classList.remove("minor");
-    //         } else {
-    //             element.classList.add("minor");
-    //         }
-    //     });
-    // }
 }
 
 function getDataFromElement(elem) {
@@ -96,15 +77,31 @@ function getDataFromElement(elem) {
     return (data);
 }
 
+function displayReturn(response) {
+    console.log(response);
+}
+
 function sendForm() {
     var data = new FormData();
     var inputs = getDataFromElement(document.querySelector(".preadmission"));
 
     for (var key in inputs) {
-         data.append(key, inputs[key]);
+        data.append(key, inputs[key]);
     };
     fetch('/api/preadmission/', {
         method: 'POST',
         body: data
+    }).then(response => {
+        if (!response.ok) {
+            throw new Error("Problème de connexion");
+        }
+        return (response.json());
+    }).then(data => {
+        if (data["status"] != 0) {
+            throw new Error(data["error"]);
+        }
+        showSuccess("Préadmission effectuée");
+    }).catch(error => {
+        showError(error.message || "Problème de connexion")
     });
 }

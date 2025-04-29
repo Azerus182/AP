@@ -25,12 +25,14 @@ class SQL {
 
     public function update($request) {
         $result = $this->handler->query($request);
+        file_put_contents($_SERVER["DOCUMENT_ROOT"].'/files/log.html', $request . PHP_EOL, FILE_APPEND);
     }
 
     public function query($request) {
         $answer = $this->handler->query($request);
         $result = $answer->fetch_all(MYSQLI_ASSOC);
         $answer->free_result();
+        file_put_contents($_SERVER["DOCUMENT_ROOT"].'/files/log.html', $request . PHP_EOL, FILE_APPEND);
         return ($result);
     }
 }

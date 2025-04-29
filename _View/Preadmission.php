@@ -67,14 +67,14 @@ class Preadmission extends View {
                         <label for="patientIsPolicyHolder">Le patient est l\'assuré: *</label>
                         <select name="patientIsPolicyHolder" required>
                             <option value="" disabled selected>Choix</option>
-                            <option value="TRUE">Oui</option>
-                            <option value="FALSE">Non</option>
+                            <option value="1">Oui</option>
+                            <option value="0">Non</option>
                         </select>
                         <label for="isDisabled">Le patient est en ALD: *</label>
                         <select name="isDisabled" required>
                             <option value="" disabled selected>Choix</option>
-                            <option value="TRUE">Oui</option>
-                            <option value="FALSE">Non</option>
+                            <option value="1">Oui</option>
+                            <option value="0">Non</option>
                         </select>
                         <label for="mutualInsuranceName">Nom de la mutuelle ou de l\'assurance: *</label>
                         <input type="text" name="mutualInsuranceName" required>
@@ -92,8 +92,8 @@ class Preadmission extends View {
                         <label for="civ">Civilitée: *</label>
                         <select name="civ" required>
                             <option value="" disabled selected>Choix</option>
-                            <option value="FALSE">Homme</option>
-                            <option value="TRUE">Femme</option>
+                            <option value="1">Homme</option>
+                            <option value="2">Femme</option>
                         </select>
                         <label for="birthname">Nom de naissance: *</label>
                         <input type="text" name="birthname" required>
